@@ -5,14 +5,27 @@
  */
 package entities.bettype;
 
+import interfaces.AvailableBet;
+import interfaces.BetType;
+import java.util.ArrayList;
+
 /**
  *
  * @author Rypon
  */
-public class SoccerHalftimeBet {
+public class SoccerHalftimeBet implements AvailableBet {
 
+    private String name = "HT";
     private HandicapBetType handicap;
     private GoalBetType goal;
+    private Fulltime1x2BetType fulltime1x2;
+    private ArrayList<BetType> allBets;
+
+    public SoccerHalftimeBet(HandicapBetType handicap, GoalBetType goal, Fulltime1x2BetType fulltime1x2) {
+        this.handicap = handicap;
+        this.goal = goal;
+        this.fulltime1x2 = fulltime1x2;
+    }
 
     public SoccerHalftimeBet(HandicapBetType handicap, GoalBetType goal) {
         this.handicap = handicap;
@@ -20,6 +33,13 @@ public class SoccerHalftimeBet {
     }
 
     public SoccerHalftimeBet() {
+    }
+
+    private void initAllBets() {
+        allBets = new ArrayList<BetType>();
+        allBets.add(goal);
+        allBets.add(handicap);
+        allBets.add(fulltime1x2);
     }
 
     public HandicapBetType getHandicap() {
@@ -36,5 +56,28 @@ public class SoccerHalftimeBet {
 
     public void setGoal(GoalBetType goal) {
         this.goal = goal;
+    }
+
+    public Fulltime1x2BetType getFulltime1x2() {
+        return fulltime1x2;
+    }
+
+    public void setFulltime1x2(Fulltime1x2BetType fulltime1x2) {
+        this.fulltime1x2 = fulltime1x2;
+    }
+
+    @Override
+    public ArrayList<BetType> getBets() {
+        return allBets;
+    }
+
+    @Override
+    public void setBets(ArrayList<BetType> bets) {
+        this.allBets = bets;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 }

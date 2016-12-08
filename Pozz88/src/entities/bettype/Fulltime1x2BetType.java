@@ -11,27 +11,19 @@ import interfaces.BetType;
  *
  * @author Rypon
  */
-public class HandicapBetType implements BetType {
+public class Fulltime1x2BetType implements BetType {
 
-    private String name = "HDP";
-    private float rate;
+    private String name = "1x2";
+    private float draw;
     private float home;
     private float away;
 
-    public HandicapBetType(float rate, float home, float away) {
-        this.rate = rate;
+    public Fulltime1x2BetType() {
+    }
+
+    public Fulltime1x2BetType(float draw, float home, float away) {
+        this.draw = draw;
         this.home = home;
-        this.away = away;
-    }
-
-    public HandicapBetType() {
-    }
-
-    public void setHome(float home) {
-        this.home = home;
-    }
-
-    public void setAway(float away) {
         this.away = away;
     }
 
@@ -39,18 +31,26 @@ public class HandicapBetType implements BetType {
         return home;
     }
 
+    public void setHome(float home) {
+        this.home = home;
+    }
+
     public float getAway() {
         return away;
     }
 
+    public void setAway(float away) {
+        this.away = away;
+    }
+
     @Override
     public float getRate() {
-        return rate;
+        return draw;
     }
 
     @Override
     public void setRate(float rate) {
-        this.rate = rate;
+        this.draw = rate;
     }
 
     @Override

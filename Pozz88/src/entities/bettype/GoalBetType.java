@@ -11,8 +11,9 @@ import interfaces.BetType;
  *
  * @author Rypon
  */
-public class GoalBetType implements BetType{
-    
+public class GoalBetType implements BetType {
+
+    private String name = "Goal";
     private float rate;
     private float over;
     private float under;
@@ -24,8 +25,8 @@ public class GoalBetType implements BetType{
     }
 
     public GoalBetType() {
-    }  
-    
+    }
+
     public float getOver() {
         return over;
     }
@@ -41,15 +42,19 @@ public class GoalBetType implements BetType{
     public void setUnder(float under) {
         this.under = under;
     }
-    
+
     @Override
     public float getRate() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return rate;
     }
 
     @Override
     public void setRate(float rate) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.rate = rate;
     }
-    
+
+    @Override
+    public String getName() {
+        return name;
+    }
 }

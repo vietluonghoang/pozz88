@@ -11,10 +11,10 @@ import interfaces.League;
  *
  * @author Rypon
  */
-public class SoccerLeague implements League{
+public class SoccerLeague implements League {
 
     private String name;
-    
+
     @Override
     public String getName() {
         return name;
@@ -22,14 +22,19 @@ public class SoccerLeague implements League{
 
     @Override
     public void setName(String name) {
-        if(name==null){
+        if (name == null) {
             name = "";
         }
-        if(name.isEmpty()){
+        if (name.isEmpty()) {
             this.name = "---";
-        }else{
+        } else {
             this.name = name;
         }
     }
-    
+
+    @Override
+    public String toString() {
+        return getName();
+    }
+
 }

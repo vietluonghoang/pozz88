@@ -9,11 +9,11 @@ package interfaces;
  *
  * @author Rypon
  */
-public interface BetType {
-
+public interface RunningThread {
+    public void startThread();
+    public void preconditionCheck();
+    public void perform();
+    public boolean isGoingToStop();
     public String getName();
-
-    public float getRate();
-
-    public void setRate(float rate);
+    public void stopNow();
 }

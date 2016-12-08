@@ -11,9 +11,10 @@ import interfaces.Team;
  *
  * @author Rypon
  */
-public class SoccerTeam implements Team{
+public class SoccerTeam implements Team {
+
     private String name;
-    
+
     @Override
     public String getName() {
         return name;
@@ -21,13 +22,18 @@ public class SoccerTeam implements Team{
 
     @Override
     public void setName(String name) {
-        if(name==null){
+        if (name == null) {
             name = "";
         }
-        if(name.isEmpty()){
+        if (name.isEmpty()) {
             this.name = "---";
-        }else{
+        } else {
             this.name = name;
         }
+    }
+
+    @Override
+    public String toString() {
+        return getName();
     }
 }

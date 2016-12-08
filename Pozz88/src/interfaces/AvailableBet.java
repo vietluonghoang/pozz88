@@ -5,15 +5,17 @@
  */
 package interfaces;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Rypon
  */
-public interface BetType {
+public interface AvailableBet {
+
+    public ArrayList<BetType> getBets();
+
+    public void setBets(ArrayList<BetType> bets);
 
     public String getName();
-
-    public float getRate();
-
-    public void setRate(float rate);
 }

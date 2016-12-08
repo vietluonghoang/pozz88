@@ -5,9 +5,10 @@
  */
 package entities;
 
-import entities.bettype.SoccerFulltimeBet;
-import entities.bettype.SoccerHalftimeBet;
+import interfaces.AvailableBet;
 import interfaces.Match;
+import interfaces.Team;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -21,36 +22,14 @@ public class SoccerMatch implements Match {
     private SoccerTeam homeName;
     private SoccerTeam awayName;
     private SoccerLeague league;
-    private HashMap<SoccerTeam, Integer> score;
+    private HashMap<Team, Integer> score;
     private SoccerTeam favourite;
-    private SoccerFulltimeBet fulltimeBet;
-    private SoccerHalftimeBet halftimeBet;
-
-    public SoccerMatch(String id, String time, SoccerTeam homeName, SoccerTeam awayName, SoccerLeague league, HashMap<SoccerTeam, Integer> score, SoccerTeam favourite, SoccerFulltimeBet fulltimeBet, SoccerHalftimeBet halftimeBet) {
-        this.id = id;
-        this.time = time;
-        this.homeName = homeName;
-        this.awayName = awayName;
-        this.league = league;
-        this.score = score;
-        this.favourite = favourite;
-        this.fulltimeBet = fulltimeBet;
-        this.halftimeBet = halftimeBet;
-    }
-
-    public SoccerMatch(String time, SoccerTeam homeName, SoccerTeam awayName, SoccerLeague league, SoccerTeam favourite, SoccerFulltimeBet fulltimeBet, SoccerHalftimeBet halftimeBet) {
-        this.time = time;
-        this.homeName = homeName;
-        this.awayName = awayName;
-        this.league = league;
-        this.favourite = favourite;
-        this.fulltimeBet = fulltimeBet;
-        this.halftimeBet = halftimeBet;
-    }
+    private ArrayList<AvailableBet> bets;
 
     public SoccerMatch() {
     }
 
+    @Override
     public String getId() {
         return id;
     }
@@ -59,6 +38,7 @@ public class SoccerMatch implements Match {
         this.id = id;
     }
 
+    @Override
     public String getTime() {
         return time;
     }
@@ -67,6 +47,7 @@ public class SoccerMatch implements Match {
         this.time = time;
     }
 
+    @Override
     public SoccerTeam getHomeName() {
         return homeName;
     }
@@ -75,6 +56,7 @@ public class SoccerMatch implements Match {
         this.homeName = homeName;
     }
 
+    @Override
     public SoccerTeam getAwayName() {
         return awayName;
     }
@@ -83,6 +65,7 @@ public class SoccerMatch implements Match {
         this.awayName = awayName;
     }
 
+    @Override
     public SoccerLeague getLeague() {
         return league;
     }
@@ -91,36 +74,22 @@ public class SoccerMatch implements Match {
         this.league = league;
     }
 
-    public HashMap<SoccerTeam, Integer> getScore() {
+    @Override
+    public HashMap<Team, Integer> getScore() {
         return score;
     }
 
-    public void setScore(HashMap<SoccerTeam, Integer> score) {
+    public void setScore(HashMap<Team, Integer> score) {
         this.score = score;
     }
 
+    @Override
     public SoccerTeam getFavourite() {
         return favourite;
     }
 
-    public void setFavourite(SoccerTeam favourite) {
-        this.favourite = favourite;
+    @Override
+    public ArrayList<AvailableBet> getBets() {
+        return bets;
     }
-
-    public SoccerFulltimeBet getFulltimeBet() {
-        return fulltimeBet;
-    }
-
-    public void setFulltimeBet(SoccerFulltimeBet fulltimeBet) {
-        this.fulltimeBet = fulltimeBet;
-    }
-
-    public SoccerHalftimeBet getHalftimeBet() {
-        return halftimeBet;
-    }
-
-    public void setHalftimeBet(SoccerHalftimeBet halftimeBet) {
-        this.halftimeBet = halftimeBet;
-    }
-
 }
