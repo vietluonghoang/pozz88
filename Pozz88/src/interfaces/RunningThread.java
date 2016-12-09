@@ -5,6 +5,8 @@
  */
 package interfaces;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Rypon
@@ -16,4 +18,5 @@ public interface RunningThread {
     public boolean isGoingToStop();
     public String getName();
     public void stopNow();
+    public void updateInfo(ArrayList<Match> matches);
 }

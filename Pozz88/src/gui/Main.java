@@ -7,8 +7,10 @@ package gui;
 
 import entities.runningthread.SoccerRunningThread;
 import entities.ThreadRunner;
+import interfaces.Match;
 import interfaces.RunningThread;
 import java.util.ArrayList;
+import model.DetailsTableModel;
 import utilities.GeneralHelper;
 
 /**
@@ -27,15 +29,18 @@ public class Main extends javax.swing.JFrame {
 
     private void init() {
         helper = new GeneralHelper();
-        runningThreads = new ArrayList<Thread>();
+        runningThreads = new ArrayList<>();
     }
 
     private void startThread(RunningThread thread) {
         ThreadRunner runner = new ThreadRunner(thread, helper);
         Thread t = new Thread(runner);
         t.setName(thread.getName());
-        runningThreads.add(t);
         t.start();
+    }
+    
+    public void updateInfo(ArrayList<Match> matches){
+        tblMainInfo.setModel(new DetailsTableModel(matches));
     }
 
     /**
@@ -176,7 +181,8 @@ public class Main extends javax.swing.JFrame {
                 helper.showDialog(this, "Invalid sport selection.");
                 break;
             case "soccer":
-                RunningThread thread = new SoccerRunningThread(helper);
+                RunningThread thread = new SoccerRunningThread(this,helper);
+                runningThreads.add(thread);
                 startThread(thread);
                 break;
             default:
@@ -189,7 +195,7 @@ public class Main extends javax.swing.JFrame {
     private void btnListAllThreadsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListAllThreadsActionPerformed
         // TODO add your handling code here:
         helper.setLog("----------------------\nList of running threads:");
-        for (Thread t : runningThreads) {
+        for (RunningThread t : runningThreads) {
             helper.setLog("- " + t.getName());
         }
         helper.setLog("----------------------");
@@ -241,5 +247,5 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTable tblMainInfo;
     // End of variables declaration//GEN-END:variables
     private GeneralHelper helper;
-    private ArrayList<Thread> runningThreads;
+    private ArrayList<RunningThread> runningThreads;
 }

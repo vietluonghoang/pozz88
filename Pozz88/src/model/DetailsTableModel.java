@@ -11,8 +11,6 @@ import interfaces.Match;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JCheckBox;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -29,6 +27,10 @@ public class DetailsTableModel extends DefaultTableModel implements TableModel {
     private GeneralHelper helper;
     private String[] betOdds = {"Rate", "Home", "Away"};
 
+    public DetailsTableModel(ArrayList<Match> matches) {
+        this.matches = matches;
+    }    
+    
     private void initHeaders() {
         headers = new ArrayList<>();
         headers.add("ID");
@@ -136,11 +138,11 @@ public class DetailsTableModel extends DefaultTableModel implements TableModel {
                             }
                             count++;
                         } catch (IllegalAccessException ex) {
-                            helper.setLog("Illegal Access Invoking Method: get"+str);
+                            helper.setLog("Illegal Access Invoking Method: get" + str);
                         } catch (IllegalArgumentException ex) {
-                            helper.setLog("Illegal Argument Invoking Method: get"+str);
+                            helper.setLog("Illegal Argument Invoking Method: get" + str);
                         } catch (InvocationTargetException ex) {
-                            helper.setLog("Invocation Target Invoking Method: get"+str);
+                            helper.setLog("Invocation Target Invoking Method: get" + str);
                         }
                     } catch (NoSuchMethodException ex) {
                         helper.setLog("No such method found: get" + str);
@@ -152,10 +154,4 @@ public class DetailsTableModel extends DefaultTableModel implements TableModel {
         }
         return 0;
     }
-
-    @Override
-    public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
 }

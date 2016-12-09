@@ -26,7 +26,6 @@ public class ThreadRunner implements Runnable {
     public void run() {
         if (!thread.isGoingToStop()) {
             thread.startThread();
-            thread.preconditionCheck();
         }
         while (!thread.isGoingToStop()) {
             thread.perform();
